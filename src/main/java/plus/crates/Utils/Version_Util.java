@@ -3,6 +3,7 @@ package plus.crates.Utils;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.SpawnEgg;
@@ -43,7 +44,12 @@ public class Version_Util {
         return spawnEgg.getSpawnedType();
     }
 
-    public ItemMeta handleItemFlags(ItemMeta itemMeta, List<String> flags) {
+    public ItemMeta handleItemFlags(ItemMeta itemMeta, List<ItemFlag> flags) {
+    	
+    	for (ItemFlag flag : flags) {
+    		itemMeta.addItemFlags(flag);
+		}
+    	
         return itemMeta;
     }
 

@@ -12,13 +12,13 @@ public class Version_1_8 extends Version_Util {
         super(cratesPlus);
     }
 
-    public ItemMeta handleItemFlags(ItemMeta itemMeta, List<String> flags) {
+    public ItemMeta handleItemFlags(ItemMeta itemMeta, List<ItemFlag> flags) {
         if (flags.size() > 0) {
-            for (String flag : flags) {
+            for (ItemFlag flag : flags) {
                 try {
-                    ItemFlag itemFlag = ItemFlag.valueOf(flag.toUpperCase());
-                    if (itemFlag != null) {
-                        itemMeta.addItemFlags(itemFlag);
+                   
+                    if (flag != null) {
+                        itemMeta.addItemFlags(flag);
                     }
                 } catch (Exception ignored) {
 

@@ -7,6 +7,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import plus.crates.CratesPlus;
@@ -135,7 +136,15 @@ public class Winning {
         }
 
         if (config.isSet(path + ".Flags")) {
-            previewItemStackItemMeta = cratesPlus.getVersion_util().handleItemFlags(previewItemStackItemMeta, config.getStringList(path + ".Flags"));
+        	List<String> flagString = config.getStringList(path + ".Flags");
+        	
+        	ArrayList<ItemFlag> flags = new ArrayList<>();
+        	
+        	for (String string : flagString) {
+        		flags.add(ItemFlag.valueOf(string));
+			}
+        	
+            previewItemStackItemMeta = cratesPlus.getVersion_util().handleItemFlags(previewItemStackItemMeta, flags);
         }
 
         String displayName = "";
@@ -175,7 +184,15 @@ public class Winning {
         }
 
         if (config.isSet(path + ".Flags")) {
-            winningItemStackItemMeta = cratesPlus.getVersion_util().handleItemFlags(winningItemStackItemMeta, config.getStringList(path + ".Flags"));
+        	List<String> flagString = config.getStringList(path + ".Flags");
+        	
+        	ArrayList<ItemFlag> flags = new ArrayList<>();
+        	
+        	for (String string : flagString) {
+        		flags.add(ItemFlag.valueOf(string));
+			}
+        	
+            winningItemStackItemMeta = cratesPlus.getVersion_util().handleItemFlags(winningItemStackItemMeta, flags);
         }
 
         displayName = "";
